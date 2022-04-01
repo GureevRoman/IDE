@@ -54,5 +54,5 @@ def score_game(random_predict) -> int:
     print(f'Your algorithm guesses the number in the middle for: {score} attempt')
     return(score)
 
-# RUN
-score_game(random_predict)
+if __name__ == '__main__':
+    score_game(random_predict)
