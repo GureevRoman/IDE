@@ -22,12 +22,12 @@ def random_predict(number:int=np.random.randint(1,101)) -> int:
         
         if predict_number > number:
             max_number = predict_number
-            predict_number = (max_number - min_number)//2 + min_number
+            predict_number = round((max_number + min_number)/2)
              
 
         elif predict_number < number:
             min_number = predict_number
-            predict_number += (max_number - min_number)//2
+            predict_number = round((max_number + min_number)/2)
 
         else:
             break # end of the game, exit from the cycle
@@ -35,7 +35,7 @@ def random_predict(number:int=np.random.randint(1,101)) -> int:
     return count
 
 def score_game(random_predict) -> int:
-    """For how many attempts on average out of 100 approaches our algorithm guesses
+    """For how many attempts on average out of 1000 approaches our algorithm guesses
     Args:
         random_predict ([type]): guess function
     Returns:
@@ -44,7 +44,7 @@ def score_game(random_predict) -> int:
 
     count_ls = [] # list to save the number of attempts
     np.random.seed(1) # fix seed for reproducibility
-    random_array = np.random.randint(1, 101, size=(100)) # made a list of numbers
+    random_array = np.random.randint(1, 101, size=(1000)) # made a list of numbers
 
     for number in random_array:
         count_ls.append(random_predict(number))
